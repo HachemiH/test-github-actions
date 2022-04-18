@@ -30,10 +30,8 @@ jobs:
     steps:
       - name: Create comment with API
         run: |
-          gh api \
-            --method POST \
-            -H "Accept: application/vnd.github.v3+json" \
-            /repos/OWNER/REPO/issues/ISSUE_NUMBER/comments \
+          gh api -X POST \
+            https://api.github.com/repos/OWNER/REPO/issues/ISSUE_NUMBER/comments \
             -f body='This is a message from the API'
 
     env:
