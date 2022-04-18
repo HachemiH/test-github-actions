@@ -30,11 +30,11 @@ jobs:
     steps:
       - name: Create comment with API
         run: |
-          gh api \
-            --method POST \
+          curl \
+            -X POST \
             -H "Accept: application/vnd.github.v3+json" \
-            /repos/OWNER/REPO/issues/ISSUE_NUMBER/comments \
-            -f body='This is a comment from the API'
+            https://api.github.com/repos/OWNER/REPO/issues/ISSUE_NUMBER/comments \
+            -d '{"body":"This is a comment from the API"}'
 
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
